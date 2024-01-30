@@ -83,8 +83,7 @@ public class CacheController {
 			if(file.isFile()) {
 				Long lastModified = file.lastModified();
 				long timeDiference = System.currentTimeMillis() - lastModified;
-				if(timeDiference >= 120000) { // 2 minutes
-					//Remove File
+				if(timeDiference >= envVariables.getLifeTimeOfData()) {
 					file.delete();
 					LOG.info("The File: " + file.getName() + " was deleted");
 				}

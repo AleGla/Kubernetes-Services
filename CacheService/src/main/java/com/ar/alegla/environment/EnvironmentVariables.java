@@ -10,8 +10,8 @@ public class EnvironmentVariables {
 		@Value("${cacheDirectory}")
 		private String cacheDirectory;
 		
-		@Value("${scheduledDeleteOldData}")
-		private String scheduledDeleteOldData;
+		@Value("${lifeTimeOfData}")
+		private long lifeTimeOfData;
 
 		public String getCacheDirectory() {
 			return cacheDirectory;
@@ -21,13 +21,15 @@ public class EnvironmentVariables {
 			this.cacheDirectory = cacheDirectory;
 		}
 
-		public String getScheduledDeleteOldData() {
-			return scheduledDeleteOldData;
+		public long getLifeTimeOfData() {
+			return lifeTimeOfData;
 		}
 
-		public void setScheduledDeleteOldData(String scheduledDeleteOldData) {
-			this.scheduledDeleteOldData = scheduledDeleteOldData;
+		public void setLifeTimeOfData(long lifeTimeOfData) {
+			this.lifeTimeOfData = lifeTimeOfData;
 		}
+
+		
 		
 		
 
