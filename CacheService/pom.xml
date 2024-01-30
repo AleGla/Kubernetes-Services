@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ar.alegla</groupId>
 	<artifactId>CacheService</artifactId>
-	<version>0.0.1</version>
+	<version>SNAPSHOT</version>
 	<name>CacheService</name>
 	<description>You can save anything only JSON format. The files keepalive for 5 minutes.</description>
 	<properties>
