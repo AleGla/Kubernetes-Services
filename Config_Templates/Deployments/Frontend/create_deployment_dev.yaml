@@ -1,0 +1,29 @@
+# ... Deployment YAML definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: burgershop
+  namespace: alegla-frontend-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: BurgerShop
+  template:
+    metadata:
+      labels:
+        app: BurgerShop
+    spec:
+      containers:
+        - name: app
+          image: aledocker1997/burgershop:develop
+          resources:
+            requests:
+              cpu: "80m"
+              memory: "64Mi"
+            limits:
+              cpu: "120m"
+              memory: "100Mi"  
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always

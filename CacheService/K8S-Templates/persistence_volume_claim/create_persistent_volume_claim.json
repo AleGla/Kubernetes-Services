@@ -1,0 +1,21 @@
+{
+  "kind": "PersistentVolumeClaim",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "cache-pvc-prod",
+    "namespace": "alegla-backend-prod"
+  },
+  "spec": {
+    "volumeName": "cache-pv-prod",
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "storageClassName": "local-storage",
+    "volumeMode": "Filesystem",
+    "resources": {
+      "requests": {
+        "storage": "2Gi"
+      }
+    }
+  }
+}

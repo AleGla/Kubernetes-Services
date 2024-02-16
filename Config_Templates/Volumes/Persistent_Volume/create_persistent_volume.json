@@ -1,0 +1,39 @@
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "cache-pv-prod"
+  },
+  "spec": {
+    "capacity": {
+      "storage": "2Gi"
+    },
+    "volumeMode": "Filesystem",
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "persistentVolumeReclaimPolicy": "Retain",
+    "storageClassName": "local-storage",
+    "local": {
+      "path": "/opt/Kubernetes/data/dev/tmp"
+    },
+    "nodeAffinity": {
+      "required": {
+        "nodeSelectorTerms": [
+          {
+            "matchExpressions": [
+              {
+                "key": "kubernetes.io/hostname",
+                "operator": "In",
+                "values": [
+                  "k8sworker1",
+                  "k8sworker2"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

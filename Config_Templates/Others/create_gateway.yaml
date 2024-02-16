@@ -1,0 +1,11 @@
+apiVersion: gateway.networking.k8s.io/betav1
+kind: Gateway
+metadata:
+  name: gateway-config
+  namespace: alegla-frontend-dev
+spec:
+  gatewayClassName: gateway-class
+  listeners:
+  - name: http
+    protocol: HTTP
+    port: 80

@@ -1,0 +1,67 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "kubespring",
+    "namespace": "alegla-backend-dev"
+  },
+  "spec": {
+    "replicas": 2,
+    "selector": {
+      "matchLabels": {
+        "app": "KubeSpring"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "KubeSpring"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "aledocker1997/kubernetesdemo:develop",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "50m",
+                "memory": "60Mi"
+              },
+              "limits": {
+                "cpu": "150m",
+                "memory": "300Mi"
+              }
+            },
+            "env": [
+              {
+                "name": "directoryFiles",
+                "value": "/opt/Kubernetes/"
+              }
+            ],
+            "imagePullPolicy": "Always",
+            "volumeMounts": [
+              {
+                "name": "local-persistent-storage",
+                "mountPath": "/opt/Kubernetes"
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "local-persistent-storage",
+            "persistentVolumeClaim": {
+              "claimName": "local-pvc-dev"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
