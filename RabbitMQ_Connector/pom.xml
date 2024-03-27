@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ar.alegla</groupId>
-	<artifactId>com.ar.alegla</artifactId>
-	<version>0.0.1</version>
+	<artifactId>RabbitMQ_Connector</artifactId>
+	<version>SNAPSHOT</version>
 	<name>RabbitMQ_Connector</name>
 	<description>This service send and receive message from queue by RabbitMQ</description>
 	<properties>
