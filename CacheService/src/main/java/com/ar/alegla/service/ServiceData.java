@@ -1,7 +1,6 @@
 package com.ar.alegla.service;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
@@ -47,7 +46,7 @@ public class ServiceData {
 	
 	public JSONObject getData(String id, String directory) throws StreamReadException, DatabindException, IOException {
 		String pathFile = directory + id + ".json";
-		JSONObject payload = new JSONObject(Files.readString(Paths.get(pathFile), StandardCharsets.UTF_8));
+		JSONObject payload = new JSONObject(new String(Files.readAllBytes(Paths.get(pathFile))));
 		log.info("ID: " + id + " | Executing GET method, data recovered:" + payload);
 		return payload.getJSONObject("data");
 	}
