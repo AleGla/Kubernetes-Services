@@ -1,0 +1,47 @@
+{"properties": [
+  {
+    "name": "ssl.insecure.enable",
+    "type": "java.lang.String",
+    "description": "It's a flag to set Insecure mode when you use RestTemplate"
+  },
+  {
+    "name": "ssl.cacerts.password",
+    "type": "java.lang.String",
+    "description": "It's the cacert's pass"
+  },
+  {
+    "name": "ssl.cacerts.file",
+    "type": "java.lang.String",
+    "description": "The path where is the cacerts file'"
+  },
+  {
+    "name": "rest.service.url.domain",
+    "type": "java.lang.String",
+    "description": "RestService's Domain"
+  },
+  {
+    "name": "rest.service.url.version",
+    "type": "java.lang.String",
+    "description": "RestService's Api Version"
+  },
+  {
+    "name": "rest.service.url.resource.status",
+    "type": "java.lang.String",
+    "description": "RestService's resource"
+  },
+  {
+    "name": "rest.service.url.resource.basePath",
+    "type": "java.lang.String",
+    "description": "RestService's API BasePath"
+  },
+  {
+    "name": "rest.service.url.resource.dolarCripto",
+    "type": "java.lang.String",
+    "description": "RestService's API dolarCripto"
+  },
+  {
+    "name": "rest.service.url.resource.dolarOficial",
+    "type": "java.lang.String",
+    "description": "RestService's API dolarOficial'"
+  }
+]}
