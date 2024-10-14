@@ -4,7 +4,7 @@ WORKDIR /workdir
 COPY pom.xml ./
 COPY src ./src
 
-RUN mvn package -Dskiptests
+RUN ["mvn", "install", "-Dmaven.test.skip=true"]
 
 FROM openjdk:8-jdk-slim
 CMD ["catalina.sh","run"]
