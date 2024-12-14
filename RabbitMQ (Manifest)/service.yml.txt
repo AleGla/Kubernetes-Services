@@ -1,0 +1,29 @@
+#Creating service for access to the UI
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitm2
+  namespace: dev-backend-apps
+spec:
+  selector:
+    app: rabbitm2
+  ports:
+    - protocol: TCP
+      port: 8099
+      targetPort: 15672
+  type: LoadBalancer
+---
+#Creating service to use RabbitMQ (amqp protocol) 
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitm2amqp
+  namespace: dev-backend-apps
+spec:
+  selector:
+    app: rabbitm2
+  ports:
+    - protocol: TCP
+      port: 8099
+      targetPort: 5672
+  type: LoadBalancer
