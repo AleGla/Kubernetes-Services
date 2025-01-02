@@ -1,0 +1,124 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cacerts-pv-dev
+  namespace: backend-apps-dev
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /opt/Kubernetes/data/dev/cacerts/dolarservice
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - k8sworker1
+          - k8sworker2
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: cacerts-pvc-dev
+  namespace: backend-apps-dev
+spec:
+  volumeName: cacerts-pv-dev
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dolarservice
+  namespace: backend-apps-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: DolarService
+  template:
+    metadata:
+      labels:
+        app: DolarService
+    spec:
+      containers:
+        - name: app
+          image: aledocker1997/dolarservice:dev
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "60Mi"
+            limits:
+              cpu: "150m"
+              memory: "300Mi"
+          env:
+          - name: spring.application.name
+            value: "DolarService"
+          - name: spring.mvc.throw-exception-if-no-handler-found
+            value: "true"
+          - name: spring.web.resources.add-mappings
+            value: "false"
+          - name: rest.service.url.domain
+            value: "https://dolarapi.com"
+          - name: rest.service.url.version
+            value: "/v1/"
+          - name: rest.service.url.resource.status
+            value: "estado"
+          - name: rest.service.url.resource.basePath
+            value: "dolares"
+          - name: rest.service.url.resource.dolarOficial
+            value: "/oficial"
+          - name: rest.service.url.resource.dolarBlue
+            value: "/blue"
+          - name: rest.service.url.resource.dolarBolsa
+            value: "/bolsa"
+          - name: rest.service.url.resource.dolarContadoConLiqui
+            value: "/contadoconliqui"
+          - name: rest.service.url.resource.dolarTarjeta
+            value: "/tarjeta"
+          - name: rest.service.url.resource.dolarMayorista
+            value: "/mayorista"
+          - name: rest.service.url.resource.dolarCripto
+            value: "/cripto"
+          - name: ssl.insecure.enable
+            value: "true"		
+          - name: ssl.cacerts.file
+            value: "/cacerts/CacertsAPI"
+          - name: ssl.cacerts.password
+            value: "pass1234"		  
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: cacerts-persistent-storage
+              mountPath: /cacerts/
+      volumes:
+        - name: cacerts-persistent-storage
+          persistentVolumeClaim:
+            claimName: cacerts-pvc-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cacheservice
+  namespace: backend-apps-dev
+spec:
+  selector:
+    app: CacheService
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8080
+  type: LoadBalancer            
