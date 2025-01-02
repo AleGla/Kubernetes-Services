@@ -112,11 +112,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cacheservice
+  name: dolarservice
   namespace: backend-apps-dev
 spec:
   selector:
-    app: CacheService
+    app: DolarService
   ports:
     - protocol: TCP
       port: 8081
