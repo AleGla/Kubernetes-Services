@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "320e45c6-128c-4f3d-8a88-caff03e52e84",
+		"name": "RabbitMQ_Connector -> Service Java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40825579"
+	},
+	"item": [
+		{
+			"name": "Publish Event (msg)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "exchange",
+						"value": "${exchange.name}",
+						"type": "text"
+					},
+					{
+						"key": "routingKey",
+						"value": "${exchange.routingKey.name}",
+						"type": "text"
+					},
+					{
+						"key": "id",
+						"value": "${var.header.queue}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"I sent this message from Java and the RabbitMQ is running on K8S\",\r\n    \"date\": \"4-12-2024\",\r\n    \"person\" : {\r\n        \"firstName\": \"Leon\",\r\n        \"lastName\" : \"Kennedy\",\r\n        \"age\" : 28,\r\n        \"country\" : \"USA\"\r\n        },\r\n    \"active\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/RabbitMQ/publish",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"RabbitMQ",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consume Event (msg)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "queueName",
+						"value": "${queue.name}",
+						"type": "text"
+					},
+					{
+						"key": "quantityMessages",
+						"value": "${quantityMsg.to.get}",
+						"type": "text"
+					},
+					{
+						"key": "id",
+						"value": "${eventId.to.consume}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/RabbitMQ/consume",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"RabbitMQ",
+						"consume"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

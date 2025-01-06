@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "462191c6-a89d-40e0-8c9a-b4a4607901c9",
+		"name": "CacheService -> Service java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40825579"
+	},
+	"item": [
+		{
+			"name": "Save data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Ale\",\r\n    \"age\" : 26,\r\n    \"street\" : \"Fake Street\",\r\n    \"gender\" : \"M\",\r\n    \"nationality\" : \"Argentina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/cache/save",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"cache",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Saved data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"street\": \"Fake Street 66\",\r\n        \"name\": \"AleGla\",\r\n        \"age\": 27\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/cache/update/{{id_object}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"cache",
+						"update",
+						"{{id_object}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Saved data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/cache/get/{{id_object}}",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"cache",
+						"get",
+						"{{id_object}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

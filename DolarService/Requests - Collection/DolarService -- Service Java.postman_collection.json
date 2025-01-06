@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "972ee249-2d87-46d8-8ba4-e4a19726d702",
+		"name": "DolarService -> Service Java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40825579"
+	},
+	"item": [
+		{
+			"name": "Get Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/status",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/allTypes",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"allTypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dolar oficial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/dolarOficial",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"dolarOficial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dolar blue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/dolarBlue",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"dolarBlue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dolar bolsa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/dolarBolsa",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"dolarBolsa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dolar contado con liqui",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/dolarContadoConLiqui",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"dolarContadoConLiqui"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dolar tarjeta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/dolarTarjeta",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"dolarTarjeta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dolar cripto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/backend/services/dolar_service/dolarCripto",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"backend",
+						"services",
+						"dolar_service",
+						"dolarCripto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
